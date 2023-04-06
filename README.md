@@ -7,8 +7,10 @@ This is a solver for the [lights out puzzle][1] found in the prison stages of [H
 ## How to Use
 
 1. Play it [here][3]
-2. Open your browser's console (Usually `F12` or `Ctrl + Shift + i`)
-3. Type `solve();` into the console
+2. Setup the puzzle by clicking the lights
+3. Open your browser's console (Usually `F12` or `Ctrl + Shift + i`)
+4. Type `solve();` into the console
+5. Observe the solution in the console
 
 ## Notes
 
