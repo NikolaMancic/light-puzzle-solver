@@ -3,7 +3,7 @@ const OFF_BUTTON = 0;
 const ON_BUTTON = 1;
 const TILE = 2;
 
-let SCALE_FACTOR = 1;
+let scaleFactor = 1;
 
 const canvasBg = document.getElementById('canvas-bg');
 const contextBg = canvasBg.getContext('2d');
@@ -28,7 +28,7 @@ function drawBackground() {
     canvasBg.width = window.innerWidth;
     canvasBg.height = window.innerHeight;
 
-    let scaledSize = SPRITE_SIZE * SCALE_FACTOR;
+    let scaledSize = SPRITE_SIZE * scaleFactor;
 
     let columns = window.innerWidth / scaledSize;
     let rows = window.innerHeight / scaledSize;
@@ -49,7 +49,7 @@ function drawBackground() {
 }
 
 function drawGameBoard() {
-    let scaledSize = SPRITE_SIZE * SCALE_FACTOR;
+    let scaledSize = SPRITE_SIZE * scaleFactor;
     let padding = scaledSize;
     let totalPadding = (boardSize - 1) * padding;
     let canvasSize = scaledSize * boardSize + totalPadding;
@@ -79,7 +79,7 @@ function drawGameBoard() {
 }
 
 canvasFg.addEventListener('click', function(event) {
-    let scaledSize = SPRITE_SIZE * SCALE_FACTOR;
+    let scaledSize = SPRITE_SIZE * scaleFactor;
     let padding = scaledSize;
 
     let mouseX = event.offsetX;
@@ -112,7 +112,7 @@ function setScaleFactor() {
     let widthFactor = Math.floor(window.innerWidth / minimumCanvasSize);
     let heightFactor = Math.floor(window.innerHeight / minimumCanvasSize);
 
-    SCALE_FACTOR = Math.min(widthFactor, heightFactor);
+    scaleFactor = Math.min(widthFactor, heightFactor);
 }
 
 function draw() {
