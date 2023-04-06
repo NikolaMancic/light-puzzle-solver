@@ -3,7 +3,7 @@ const OFF_BUTTON = 0;
 const ON_BUTTON = 1;
 const TILE = 2;
 
-const NUMBER_OF_ATTEMPTS = 100;
+const NUMBER_OF_ATTEMPTS = 1000;
 const MOVER_PER_ATTEMPT = 10;
 
 let scaleFactor = 1;
