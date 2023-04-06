@@ -21,8 +21,8 @@ sprites.src = 'spritesheet.png';
 
 let gameBoard = [
     [0, 0, 0],
-    [1, 0, 0],
-    [1, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
 ];
 
 let boardSize = gameBoard.length;
