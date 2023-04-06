@@ -7,11 +7,14 @@ let SCALE_FACTOR = 1;
 
 const canvasBg = document.getElementById('canvas-bg');
 const contextBg = canvasBg.getContext('2d');
+contextBg.imageSmoothingEnabled = false;
 
 const canvasFg = document.getElementById('canvas-fg');
 const contextFg = canvasFg.getContext('2d');
+contextFg.imageSmoothingEnabled = false;
 
-const sprites = document.getElementById('sprite-sheet');
+const sprites = new Image();
+sprites.src = 'spritesheet.png';
 
 let gameBoard = [
     [0, 0, 0],
