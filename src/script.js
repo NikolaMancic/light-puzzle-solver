@@ -3,6 +3,9 @@ const OFF_BUTTON = 0;
 const ON_BUTTON = 1;
 const TILE = 2;
 
+const NUMBER_OF_ATTEMPTS = 100;
+const MOVER_PER_ATTEMPT = 10;
+
 let scaleFactor = 1;
 
 const canvasBg = document.getElementById('canvas-bg');
@@ -23,6 +26,98 @@ let gameBoard = [
 ];
 
 let boardSize = gameBoard.length;
+
+function copyBoard() {
+    let newBoard = [];
+
+    for(let x = 0; x < boardSize; x++) {
+        newBoard[x] = [];
+
+        for(let y = 0; y < boardSize; y++) {
+            newBoard[x][y] = gameBoard[x][y];
+        }
+    }
+
+    return newBoard;
+}
+
+function isSolved(board) {
+    for(let x = 0; x < boardSize; x++) {
+        for(let y = 0; y < boardSize; y++) {
+            if(board[y][x] !== 1) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+function toggleCellAndNeighbors(board, x, y) {
+    // toggle cell
+    board[y][x] = board[y][x] === 0 ? 1 : 0;
+
+    // toggle above
+    if(y > 0) {
+        board[y - 1][x] = board[y - 1][x] === 0 ? 1 : 0;
+    }
+
+    // toggle below
+    if(y < boardSize - 1) {
+        board[y + 1][x] = board[y + 1][x] === 0 ? 1 : 0;
+    }
+
+    // toggle left
+    if(x > 0) {
+        board[y][x - 1] = board[y][x - 1] === 0 ? 1 : 0;
+    }
+
+    // toggle right
+    if(x < boardSize - 1) {
+        board[y][x + 1] = board[y][x + 1] === 0 ? 1 : 0;
+    }
+}
+
+function solve() {
+    let bestNumberOfMoves = Infinity;
+    let bestMoves = [];
+
+    for(let i = 0; i < NUMBER_OF_ATTEMPTS; i++) {
+        console.debug('Attempt #' + i);
+
+        let tempBoard = copyBoard();
+        let moves = [];
+
+        for(let j = 0; j < MOVER_PER_ATTEMPT; j++) {
+            let x = Math.floor(Math.random() * boardSize);
+            let y = Math.floor(Math.random() * boardSize);
+            moves.push(
+                {
+                    x: (x + 1),
+                    y: (y + 1)}
+                );
+            toggleCellAndNeighbors(tempBoard, x, y);
+
+            if(isSolved(tempBoard)) {
+                console.debug('Solution found in ' + (j + 1) + ' moves');
+                if(j < bestNumberOfMoves) {
+                    bestNumberOfMoves = j;
+                    bestMoves = moves;
+                }
+                break;
+            }
+        }
+    }
+
+    console.debug('---------------------------------------------');
+
+    if(bestNumberOfMoves === Infinity) {
+        console.debug('No solution found');
+    } else {
+        console.debug('Best solution found in ' + (bestNumberOfMoves + 1) + ' moves');
+        console.debug(bestMoves);
+    }
+}
 
 function drawBackground() {
     canvasBg.width = window.innerWidth;
