@@ -1,0 +1,19 @@
+{
+  "name": "light-puzzle-solver",
+  "version": "1.0.0",
+  "description": "Light Puzzle Solver",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaMancic/light-puzzle-solver.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/NikolaMancic/light-puzzle-solver/issues"
+  },
+  "homepage": "https://github.com/NikolaMancic/light-puzzle-solver#readme"
+}
